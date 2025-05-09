@@ -81,24 +81,3 @@ function mdmg_customize_register($wp_customize) {
     ));
   }
   add_action('customize_register', 'mdmg_customize_register');
-
-
-
-  ///// Artist Page Code //////
-  add_theme_support('post-thumbnails');
-
-  function mdmg_register_artist_post_type() {
-    register_post_type('artist', array(
-      'labels' => array(
-          'name' => 'Artists',
-          'singular_name' => 'Artist',
-      ),
-      'public' => true,
-      'has_archive' => true,
-      'rewrite' => array('slug' => 'artists'),
-      'show_in_rest' => true,
-      'menu_icon' => 'dashicons-microphone',
-      'supports' => array('title', 'editor', 'thumbnail'), // <- important!
-  ));
-}
-add_action('init', 'mdmg_register_artist_post_type');
