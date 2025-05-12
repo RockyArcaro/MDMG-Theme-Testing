@@ -531,6 +531,11 @@ html, body {
   max-width: 920px;
 }
 
+.our-partners-color{
+  background-color: #3C4967;
+  width: 100%;
+}
+
 .our-partners {
   display: flex;
   gap: 40px;
@@ -540,6 +545,7 @@ html, body {
   max-width: 1204px;
   margin: 0 auto;
   line-height: 48px;
+  color:white;
 }
 
 .partners-text {
@@ -550,6 +556,7 @@ html, body {
   max-width: 100%;
   height: auto;
   display: block;
+  margin: 0 auto;
 }
 
 .about-mip {
@@ -570,4 +577,14 @@ html, body {
   font-weight: bold;
   color: white;
   margin: 0;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-center img {
+  max-width: 100%;
+  height: auto;
 }
