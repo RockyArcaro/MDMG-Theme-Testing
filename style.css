@@ -548,7 +548,8 @@ html, body {
   color:white;
 }
 
-.partners-text {
+.partners-text, 
+.partners-image {
   flex: 1;
 }
 
