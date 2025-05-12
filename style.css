@@ -520,3 +520,54 @@ html, body {
     text-align: center;
     color: white;
   }
+
+/* /////// About Page /////// */
+
+.about-content {
+  margin: 0 auto;
+  text-align: left;
+  width: 80%;
+  line-height: 48px;
+  max-width: 920px;
+}
+
+.our-partners {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 60px 20px;
+  max-width: 1204px;
+  margin: 0 auto;
+  line-height: 48px;
+}
+
+.partners-text {
+  flex: 1;
+}
+
+.partners-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about-mip {
+  background: url('images/about-header-image.png') no-repeat center center;
+  background-size: cover;
+  max-width: 1204px;
+  height: 300px;
+  margin: 2em auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1em;
+}
+
+.about-mip h2 {
+  font-size: 64px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
