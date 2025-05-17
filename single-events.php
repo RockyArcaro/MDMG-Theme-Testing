@@ -27,61 +27,7 @@ get_header(); ?>
 
     <div class="event-container">
         <?php 
-        // 检查是否是演示事件
-        $is_demo = false;
         
-        if ($is_demo) : 
-            // 显示演示事件内容
-        ?>
-            <div class="event-header">
-                <div class="event-featured-image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/events/event1.png" alt="The Lounge at World Cafe Live">
-                </div>
-                
-                <div class="event-details">
-                    <h1 class="event-title">The Lounge at World Cafe Live</h1>
-                    
-                    <div class="event-meta">
-                        <p class="event-promoter">promoter name</p>
-                        <p class="event-artist">Artist Name</p>
-                        <p class="event-tour">tour name</p>
-                        <p class="event-time">doors: 7:00 PM, show: 8:00 PM</p>
-                        <p class="event-price">ticket price</p>
-                    </div>
-                    
-                    <a href="#" class="buy-tickets-button">BUY TICKETS</a>
-                </div>
-            </div>
-            
-            <div class="event-content-wrapper">
-                <div class="event-content-columns">
-                    <div class="artist-info">
-                        
-                        <div class="artist-image" style="display:flex;flex-direction:column;align-items:center">
-                        <h2>ARTIST INFO</h2>
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/events/author.png" alt="Artist Image">
-                        </div>
-                    </div>
-                    <div style="border-left:1px solid rgb(159,159,159);height:290px;margin-right:65px"></div>
-                    <div class="venue-info">
-                       
-                        <div style="gap:20px;display: flex; justify-content: space-between;align-items: center;">
-                            <div class="venue-map" style="display: flex;flex-direction: column;align-items: center;">
-                            <h2>LOCATION</h2>
-                                <img width="350px" src="<?php echo get_template_directory_uri(); ?>/images/events/address.png" alt="Venue Map" class="map-image">
-                            </div>
-                            
-                            <div class="venue-address">
-                                <p class="venue-name">Ardmore Music Hall</p>
-                                <p>23 E Lancaster Ave,</p>
-                                <p>Ardmore, PA 19003</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php 
-        else :
             // 显示真实事件内容
             while (have_posts()) : the_post(); 
                 
@@ -147,7 +93,6 @@ get_header(); ?>
             </div>
         <?php 
             endwhile;
-        endif; 
         ?>
     </div>
 </div>
@@ -171,7 +116,7 @@ get_header(); ?>
             window.location.href = prevPageUrl;
         } else {
             // 默认返回事件页面
-            window.location.href = '<?php echo esc_url(home_url('/events/')); ?>';
+            window.location.href = '<?php echo esc_url(home_url('/index.php/events/')); ?>';
         }
     }
 

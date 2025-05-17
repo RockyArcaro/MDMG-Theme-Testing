@@ -44,9 +44,37 @@ endif;
         
         <!-- 活动展示区域 -->
         <div class="featured-events">
-           
+        <?php
+        $args = array(
+            'post_type' => 'events', // 自定义文章类型名称
+            'posts_per_page' => 2, // 显示所有文章，可根据需求调整数量
+            'orderby' => 'date',
+            'order' => 'DESC',
+            
+        );
+        // 创建WP_Query对象
+$custom_query = new WP_Query($args);
+// 检查是否有文章
+if ($custom_query->have_posts()) :
+    while ($custom_query->have_posts()) : $custom_query->the_post();
+        $title = get_field('title')??"";
+        $date = get_field('date')??"";
+        $date_obj = DateTime::createFromFormat('Y-m-d', $date);
+        echo '<a href="'.get_permalink().'" class="event-card">
+                    <div class="event-date">'.$date_obj->format('D, M j').'</div>
+                    <div class="event-details">
+                        <h3 class="event-title">'.$title.'</h3>
+                    </div>
+                </a>';
+    endwhile;
+    // 重置查询
+    wp_reset_postdata();
+else :
+    echo '没有找到相关文章。';
+endif;
+    ?>
                 <!-- 如果没有事件，显示默认事件 -->
-                <div class="event-card">
+                <!-- <div class="event-card">
                     <div class="event-date">Thur, Feb 13</div>
                     <div class="event-details">
                         <h3 class="event-title">The Lounge at World Cafe Live</h3>
@@ -57,7 +85,7 @@ endif;
                     <div class="event-details">
                         <h3 class="event-title">The Lounge at World Cafe Live</h3>
                     </div>
-                </div>
+                </div> -->
         </div>
         
         <!-- 标签切换区域 -->
@@ -289,6 +317,14 @@ endif;
         border-radius: 5px;
         overflow: hidden;
         flex: 1;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .event-card:hover {
+        background-color: #444b60;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     
     .event-date {
