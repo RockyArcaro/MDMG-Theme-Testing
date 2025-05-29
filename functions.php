@@ -102,3 +102,23 @@ function mdmg_customize_register($wp_customize) {
   ));
 }
 add_action('init', 'mdmg_register_artist_post_type');
+
+
+////// Store Code ///////
+
+function create_store_item_post_type() {
+  register_post_type('store_item',
+      array(
+          'labels' => array(
+              'name' => __('Store Items'),
+              'singular_name' => __('Store Item')
+          ),
+          'public' => true,
+          'has_archive' => true,
+          'rewrite' => array('slug' => 'store'),
+          'show_in_rest' => true,
+          'supports' => array('title', 'thumbnail', 'editor'),
+      )
+  );
+}
+add_action('init', 'create_store_item_post_type');
