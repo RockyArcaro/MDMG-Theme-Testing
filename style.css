@@ -470,53 +470,347 @@ html, body {
     }
   }
   
-  .artist-card {
-    text-decoration: none;
-    color: white;
-    background: #3C4967;
-    box-shadow: 10px 10px 0px #e7538b;
-    transition: transform 0.3s, box-shadow 0.3s;
-    overflow: hidden;
-    display: flex;
+
+.artist-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .artist-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .artist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card box */
+.artist-card {
+  background-color: #2f3a55;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  box-shadow: 10px 10px 0 #de4ea4;
+  max-width: 320px;
+  margin: 1rem auto;
+  border: 16px solid #2f3a55; /* same color to start with, can customize */
+}
+
+.artist-card:hover {
+  transform: scale(1.02);
+  box-shadow: 10px 10px 0 #de4ea4;
+}
+
+/* Square image that fills the card’s full width */
+.artist-thumbnail {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.artist-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Title below the image */
+.artist-name {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color:white;
+}
+
+  /* /////// Blog Page Code ////// */
+  
+.single-post-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  color: #1e1e1e;
+}
+
+.post-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: stretch;
+  margin-bottom: 2rem;
+}
+
+.post-thumbnail {
+  flex: 1 1 300px;
+  aspect-ratio: 1 / 1; /* Forces square aspect ratio */
+  overflow: hidden;
+}
+
+.post-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fills the square */
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+
+.post-meta {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.category-label {
+  background-color: #fdd835;
+  color: #000000;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  max-width: fit-content;
+  text-decoration: none;
+}
+
+.post-date {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  font-family: 'Antipol_VF';
+  font-weight: bold;
+  color: #3C4967;
+}
+
+.post-excerpt {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.post-author {
+  font-style: italic;
+  color: #777;
+}
+
+.post-content {
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 4rem;
+}
+
+.author-bio {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ccc;
+}
+
+.author-avatar img {
+  border-radius: 50%;
+}
+
+.author-info h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.author-socials {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .post-header {
     flex-direction: column;
-    height: 100%;
   }
-  
-  .artist-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 10px 10px 0px #e7538b;
-  }
-  
-  .artist-card-inner {
-    padding: 1rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  .artist-thumbnail {
+
+  .post-thumbnail,
+  .post-info {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Keeps image square */
-    background-color: #3C4967;
-    padding: 1rem;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  }
+}
+
+/* //////// Blog Archive Page //////// */
+
+.blog-archive .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.blog-card {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: scale(1.02);
+}
+
+.blog-thumbnail img,
+.fallback-thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: #eee;
+  display: block;
+}
+
+.blog-content {
+  padding: 1rem;
+}
+
+.blog-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+.blog-excerpt {
+  font-size: 1rem;
+  color: #555;
+}
+
+.custom-blog-card {
+  background-color: #2f3a55;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  box-shadow: 10px 10px 0 #de4ea4;
+  max-width: 320px;
+  margin: 1rem auto;
+  border: 16px solid #2f3a55; /* same color to start with, can customize */
+}
+
+.custom-blog-card:hover {
+  transform: scale(1.02);
+}
+
+.custom-blog-card .card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #1e253a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-blog-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.custom-blog-card .card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  padding: 0 1rem 1rem;
+  line-height: 1.4;
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+/* Make sure the container stacks vertically and centers its children */
+.blog-archive .container {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Center the heading, clear any floats, force full width */
+.blog-archive .page-title,
+.blog-archive .section-heading {
+  width: 100% !important;
+  float: none !important;
+  text-align: center !important;
+  margin: 0 0 1.5rem;
+}
+
+/* 1) Base grid: 3 columns */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* 2) Tablet (≤ 900px): 2 columns */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .artist-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
+  /* Optional: shrink card padding/font on tablet */
+  .custom-blog-card {
+    padding-bottom: 0.75rem;
   }
-  
-  .artist-name {
-    margin-top: 1rem;
-    font-size: 1.25rem;
-    text-align: center;
-    color: white;
+  .custom-blog-card .card-title {
+    font-size: 0.95rem;
   }
+}
+
+/* 3) Phone (≤ 600px): 1 column */
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .custom-blog-card {
+    max-width: none;    /* let it fill the column */
+    margin: 1rem 0;     /* vertical spacing only */
+  }
+
+  .blog-archive .container {
+    padding: 1rem;      /* tighten container padding */
+  }
+
+  .section-heading {
+    font-size: 1.5rem;  /* reduce heading size */
+    margin-bottom: 1rem;
+  }
+}

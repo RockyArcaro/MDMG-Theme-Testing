@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main class="artist-archive">
-  <h1>Our Artists</h1>
+  <h1 class="section-heading">Our Artists</h1>
 
   <div class="artist-grid">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
