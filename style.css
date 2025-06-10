@@ -375,7 +375,6 @@ html, body {
     background-color: #ffb3d9; /* Pink */
     padding: 2rem;
     margin-top: 2rem;
-    border-radius: 12px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -392,7 +391,6 @@ html, body {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
   
@@ -447,7 +445,83 @@ html, body {
     opacity: 0.6;
   }
 
+  /* /////////////// Grid/Card Codes for Posts /////////////// */
 
+/* ─── 1) Grid: 3 / 2 / 1 columns ─── */
+.card-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.card {
+  background-color: #2f3a55;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  box-shadow: 10px 10px 0 #de4ea4;
+  max-width: 320px;
+  margin: 0 auto; /* centers each card in its grid cell */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 0 #de4ea4;
+}
+
+/* ─── Thumbnail Container: forces a perfect square ─── */
+.card .card-thumbnail {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #1e253a; /* fallback if no image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card .card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Title & (Optional) Price/Excerpt ─── */
+.card .card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 1rem 0.75rem 0;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card .card-price,
+.card .card-excerpt {
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 0.5rem 0.75rem 1rem;
+  margin: 0;
+  color: #f8f8f8;
+}
 
   /* /////// Artist Page Code /////// */
 
@@ -494,8 +568,7 @@ html, body {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 1.5rem auto;   /* give some breathing room */
-  border-radius: 4px;    /* optional, matches card styling */
+  margin: 1.5rem auto;   /* give some breathing room */  
   box-shadow: 0 2px 8px #de4ea4;
 }
 
@@ -717,7 +790,6 @@ html, body {
 .blog-card {
   background-color: #fefefe;
   border: 1px solid #ddd;
-  border-radius: 8px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
@@ -791,7 +863,7 @@ html, body {
 }
 
 .custom-blog-card .card-title {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 500;
   margin-top: 1rem;
   padding: 0 1rem 1rem;
@@ -800,9 +872,9 @@ html, body {
 
 .section-heading {
   text-align: center;
-  font-size: 2rem;
+  font-size: 4rem;
   margin-bottom: 1.5rem;
-  color: white;
+  color: #1e253a;
 }
 
 /* Make sure the container stacks vertically and centers its children */
@@ -839,8 +911,14 @@ html, body {
     padding-bottom: 0.75rem;
   }
   .custom-blog-card .card-title {
-    font-size: 0.95rem;
+    font-size: 2rem;
   }
+  .section-heading {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #1e253a;
+}
 }
 
 /* 3) Phone (≤ 600px): 1 column */
@@ -859,7 +937,122 @@ html, body {
   }
 
   .section-heading {
-    font-size: 1.5rem;  /* reduce heading size */
+    font-size: 2rem;  /* reduce heading size */
     margin-bottom: 1rem;
+  }
+}
+
+
+/* /////////// Store Page Styles //////// */
+
+.store-archive .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.store-archive .section-heading {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+/* ───────── Responsive Grid ───────── */
+.card-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ───────── Store Card Base Styles ───────── */
+.store-card {
+  background-color: #2f3a55;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  box-shadow: 10px 10px 0 #de4ea4; /* magenta drop shadow */
+  border: 16px solid #2f3a55;
+  transition: transform 0.2s ease;
+}
+
+.store-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 0 #de4ea4;
+}
+
+/* ───────── Thumbnail Area ───────── */
+.store-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #eee;
+  display: block;
+}
+
+.store-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback styling if no featured image */
+.fallback-thumbnail {
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+}
+
+/* ───────── Title & Price ───────── */
+.card-title {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card-price {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1rem;
+  color: #f8f8f8;
+}
+
+/* ───────── Optional: tighten up font on tablets ───────── */
+@media (max-width: 900px) {
+  .card-title {
+    font-size: 2rem;
+  }
+  .card-price {
+    font-size: 0.85rem;
+  }
+}
+
+/* ───────── Optional: small padding cleanup on phones ───────── */
+@media (max-width: 600px) {
+  .card-title {
+    font-size: 1rem;
+  }
+  .card-price {
+    font-size: 0.9rem;
   }
 }

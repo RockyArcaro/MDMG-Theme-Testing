@@ -3,10 +3,14 @@
  * Template for Blog Posts Page (home.php)
  */
 get_header(); ?>
+</br>
+</br>
+
+</br>
 
 <main class="blog-archive">
-  <div class="container">
-  <h2 class="page-title">Latest Blog Posts</h2>
+  <h2 class="section-heading">Latest Blog Posts</h2>
+  
   <div class="card-grid">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
       <a href="<?php the_permalink(); ?>" class="custom-blog-card">
@@ -19,7 +23,6 @@ get_header(); ?>
       </a>
     <?php endwhile; endif; ?>
   </div>
-</div>
 </main>
 
 <?php get_footer(); ?>
