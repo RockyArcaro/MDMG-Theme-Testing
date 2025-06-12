@@ -80,7 +80,7 @@ function mdmg_customize_register($wp_customize) {
       'type'     => 'text',
     ));
   }
-<<<<<<< Zijun-Test
+
   add_action('customize_register', 'mdmg_customize_register');
 =======
   add_action('customize_register', 'mdmg_customize_register');
@@ -125,4 +125,38 @@ function create_store_item_post_type() {
   );
 }
 add_action('init', 'create_store_item_post_type');
->>>>>>> main
+
+
+
+
+//////// More Stories Scroller ///////////
+
+add_action('wp_enqueue_scripts', function(){
+  wp_add_inline_script(
+    'main-style', // replace with the handle you used in wp_enqueue_script()
+    <<<'JS'
+document.addEventListener('DOMContentLoaded', function(){
+  const wrapper = document.querySelector('.more-stories .stories-wrapper');
+  const prevBtn = document.querySelector('.more-stories .stories-nav.prev');
+  const nextBtn = document.querySelector('.more-stories .stories-nav.next');
+  if (!wrapper || !prevBtn || !nextBtn) return;
+
+  // grab one card and the gap
+  const card  = wrapper.querySelector('.card');
+  const style = getComputedStyle(wrapper);
+  const gap   = parseFloat(style.getPropertyValue('gap')) || 0;
+  const width = card.getBoundingClientRect().width;
+  const scrollAmount = Math.round(width + gap);
+
+  prevBtn.addEventListener('click', () => {
+    wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+  nextBtn.addEventListener('click', () => {
+    wrapper.scrollBy({ left:  scrollAmount, behavior: 'smooth' });
+  });
+});
+JS
+  );
+});
+=======
+

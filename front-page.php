@@ -90,8 +90,12 @@ if ( have_rows('Media Player') ) {
 
   <!-- Artist Spotlight -->
   <section class="artist-spotlight">
-    <h2>Check Out Some of Our Artists</h2>
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/artist-feature.jpg" alt="Featured Artist">
+    <h1>Check Out Some of Our Artists</h1>
+      </br>
+      </br>
+  <a href="/artists">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/MoreArtists.png" alt="Featured Artist">
+  </a>
   </section>
 
 </main>
