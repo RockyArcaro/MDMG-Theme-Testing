@@ -127,19 +127,30 @@ add_action('init', 'create_store_item_post_type');
 
 //////// More Stories Scroller ///////////
 
-function mdmg_enqueue_carousel_script(){
+add_action('wp_enqueue_scripts', function(){
   wp_add_inline_script(
-    'mdmg-style', // make sure this runs *after* your main script/stylesheet
-    <<< 'JS'
-    document.addEventListener('DOMContentLoaded', function(){
-      const wrapper = document.querySelector('.stories-wrapper');
-      if(!wrapper) return;
-      document.querySelector('.more-stories .prev')
-        .addEventListener('click', () => wrapper.scrollBy({ left: -340, behavior: 'smooth' }));
-      document.querySelector('.more-stories .next')
-        .addEventListener('click', () => wrapper.scrollBy({ left:  340, behavior: 'smooth' }));
-    });
-    JS
+    'main-style', // replace with the handle you used in wp_enqueue_script()
+    <<<'JS'
+document.addEventListener('DOMContentLoaded', function(){
+  const wrapper = document.querySelector('.more-stories .stories-wrapper');
+  const prevBtn = document.querySelector('.more-stories .stories-nav.prev');
+  const nextBtn = document.querySelector('.more-stories .stories-nav.next');
+  if (!wrapper || !prevBtn || !nextBtn) return;
+
+  // grab one card and the gap
+  const card  = wrapper.querySelector('.card');
+  const style = getComputedStyle(wrapper);
+  const gap   = parseFloat(style.getPropertyValue('gap')) || 0;
+  const width = card.getBoundingClientRect().width;
+  const scrollAmount = Math.round(width + gap);
+
+  prevBtn.addEventListener('click', () => {
+    wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+  nextBtn.addEventListener('click', () => {
+    wrapper.scrollBy({ left:  scrollAmount, behavior: 'smooth' });
+  });
+});
+JS
   );
-}
-add_action('wp_enqueue_scripts','mdmg_enqueue_carousel_script');
+});

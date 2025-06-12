@@ -261,11 +261,20 @@ html, body {
   
 
 
+  .artist-spotlight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+  }
+
   /* /////// Home Page Highlight Styles ///////// */
 
 
   .highlight-container {
-    max-width: 1000px; /* match your card width */
+    max-width: 1200px; /* match your card width */
     margin: 0 auto;
     padding: 0 1rem;
   }
@@ -532,7 +541,9 @@ html, body {
     padding: 2rem;
   }
   .artist-content{
-    margin: 3rem;
+    margin: 4rem;
+    max-width: 75VW;
+    
   }
   
   .artist-content h2{
@@ -569,7 +580,13 @@ html, body {
   height: auto;
   display: block;
   margin: 1.5rem auto;   /* give some breathing room */  
-  box-shadow: 0 2px 8px #de4ea4;
+}
+.artist-profile{
+  display: flex;
+    flex-direction: column;
+    /* max-width: 75vw; */
+    align-items: center;
+    justify-content: center;
 }
 
 /* Slightly smaller text on narrow screens (phones) */
@@ -588,6 +605,7 @@ html, body {
   @media (min-width: 900px) {
     .artist-grid {
       grid-template-columns: repeat(3, 1fr); /* Desktop */
+      align-self: center;
     }
   }
   
@@ -740,6 +758,7 @@ html, body {
 
 .author-bio {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1rem;
   margin-top: 2rem;
@@ -898,12 +917,14 @@ html, body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  
 }
 
 /* 2) Tablet (≤ 900px): 2 columns */
 @media (max-width: 900px) {
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
+    margin:1.5rem;
   }
   
   /* Optional: shrink card padding/font on tablet */
@@ -925,6 +946,7 @@ html, body {
 @media (max-width: 600px) {
   .card-grid {
     grid-template-columns: 1fr;
+    margin:1.5rem;
   }
 
   .custom-blog-card {
@@ -989,6 +1011,7 @@ html, body {
   box-shadow: 10px 10px 0 #de4ea4; /* magenta drop shadow */
   border: 16px solid #2f3a55;
   transition: transform 0.2s ease;
+  
 }
 
 .store-card:hover {
@@ -1106,7 +1129,9 @@ html, body {
   
 }
 
+.author-bio{
 
+}
 
 .more-stories-thumbnail{
   width: 100%;
@@ -1188,4 +1213,18 @@ html, body {
 .site-footer, footer {
   margin-top: 0 !important;
   padding-top: 2rem;    /* optional: give it its own space from the content above */
+}
+
+.more-stories .stories-wrapper {
+  display: flex;
+  gap: 2rem;                  /* matches the space between cards */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  max-width: calc(3 * 320px + 2 * 2rem); /* 3 cards @320px + 2 gaps @2rem */
+  margin: 0 auto;             /* center the strip in its container */
+}
+
+.more-stories .story-card {
+  flex: 0 0 320px;            /* each card is exactly 320px wide */
+  scroll-snap-align: start;
 }

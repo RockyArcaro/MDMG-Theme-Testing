@@ -3,7 +3,7 @@
 $current_id = get_the_ID();
 
 $more = new WP_Query([
-  'posts_per_page' => 6,
+  'posts_per_page' => 3,
   'post__not_in'   => [ $current_id ],
   'orderby'        => 'date',
   'order'          => 'DESC',
