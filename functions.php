@@ -80,6 +80,9 @@ function mdmg_customize_register($wp_customize) {
       'type'     => 'text',
     ));
   }
+<<<<<<< Zijun-Test
+  add_action('customize_register', 'mdmg_customize_register');
+=======
   add_action('customize_register', 'mdmg_customize_register');
 
 
@@ -122,3 +125,4 @@ function create_store_item_post_type() {
   );
 }
 add_action('init', 'create_store_item_post_type');
+>>>>>>> main
