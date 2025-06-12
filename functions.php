@@ -82,7 +82,6 @@ function mdmg_customize_register($wp_customize) {
   }
 
   add_action('customize_register', 'mdmg_customize_register');
-=======
   add_action('customize_register', 'mdmg_customize_register');
 
 
@@ -158,5 +157,5 @@ document.addEventListener('DOMContentLoaded', function(){
 JS
   );
 });
-=======
+
 
