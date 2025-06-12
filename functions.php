@@ -80,6 +80,9 @@ function mdmg_customize_register($wp_customize) {
       'type'     => 'text',
     ));
   }
+
+  add_action('customize_register', 'mdmg_customize_register');
+=======
   add_action('customize_register', 'mdmg_customize_register');
 
 
@@ -125,6 +128,7 @@ add_action('init', 'create_store_item_post_type');
 
 
 
+
 //////// More Stories Scroller ///////////
 
 add_action('wp_enqueue_scripts', function(){
@@ -154,3 +158,5 @@ document.addEventListener('DOMContentLoaded', function(){
 JS
   );
 });
+=======
+

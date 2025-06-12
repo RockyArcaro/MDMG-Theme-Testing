@@ -452,6 +452,7 @@ html, body {
   .song-length {
     color: #000;
     opacity: 0.6;
+
   }
 
   /* /////////////// Grid/Card Codes for Posts /////////////// */
@@ -1228,3 +1229,6 @@ html, body {
   flex: 0 0 320px;            /* each card is exactly 320px wide */
   scroll-snap-align: start;
 }
+=======
+  }
+
