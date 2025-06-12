@@ -36,10 +36,7 @@
     </div>
   </div>
 
-  <?php
-  // Optional: Include more stories section
-  get_template_part('template-parts/more', 'stories');
-  ?>
+  <?php get_template_part('template-parts/more', 'stories'); ?>
 
 </main>
 

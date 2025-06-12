@@ -1056,3 +1056,136 @@ html, body {
     font-size: 0.9rem;
   }
 }
+
+
+/* ///////// More Stories Scroller ///////// */
+
+.more-stories {
+  position: relative;
+  width: 100vw;              /* span the full viewport width */
+  left: 50%;                 /* align left edge to viewport */
+  transform: translateX(-50%);
+  margin: 0;                 /* kill default top/bottom margins */
+  padding: 2rem 0;           /* vertical padding only */
+  background: #2f3a55;       /* your dark blue background */
+  overflow: hidden;
+}
+
+.more-stories .section-heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: white;
+  font-family: "Antipol_VF";
+  font-size: 2rem;
+}
+
+.stories-wrapper {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  scrollbar-width: none;            /* Firefox */
+  font-family: "Antipol_VF";
+  font-weight: 500;
+}
+.stories-wrapper::-webkit-scrollbar { /* Chrome/Safari */
+  display: none;
+}
+
+.story-card {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  max-width: 320px;
+  background: #C7C8E7;
+  box-shadow: none;
+  color:#2f3a55;
+  font-family: "Antipol_VF";
+  font-weight: 500;
+  font-size: 1.5rem;
+  
+}
+
+
+
+.more-stories-thumbnail{
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* modern browsers will honor this */
+  overflow: hidden; 
+}
+
+.more-stories-thumbnail img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* crops & scales to fill the box */
+}
+
+
+/* Re-use your .card, .card-thumbnail, .card-title rules from above */
+
+.stories-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #E4EB45;
+  box-shadow: 5px 5px 0 #de4ea4;
+  border: none;
+  border-radius: 50%;
+  color: #de4ea4;
+  font-size: 1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  cursor: pointer;
+  z-index: 10;
+  margin: 10px;
+}
+
+.more-stories .stories-nav.prev::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 0.6rem solid transparent;
+  border-bottom: 0.6rem solid transparent;
+  border-right: 0.8rem solid #de4ea4;   /* triangle color */
+}
+
+.more-stories .stories-nav.next::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 0.6rem solid transparent;
+  border-bottom: 0.6rem solid transparent;
+  border-left: 0.8rem solid #de4ea4;    /* triangle color */
+}
+
+.more-stories .stories-nav {
+  font-size: 0;         /* hides the ← and → characters */
+  background: #E4EB45;      /* keep your translucent circle or styling */
+  border: none;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 50px;
+}
+.story-card-title {
+  color:#2f3a55;
+  font-family: "Antipol_VF";
+  font-weight: 500;
+  font-size: 2rem;
+  margin-top: 2rem;
+  
+}
+
+
+.more-stories .prev { left: 0.5rem; }
+.more-stories .next { right: 0.5rem; }
+
+.site-footer, footer {
+  margin-top: 0 !important;
+  padding-top: 2rem;    /* optional: give it its own space from the content above */
+}

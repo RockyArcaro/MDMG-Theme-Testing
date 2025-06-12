@@ -122,3 +122,24 @@ function create_store_item_post_type() {
   );
 }
 add_action('init', 'create_store_item_post_type');
+
+
+
+//////// More Stories Scroller ///////////
+
+function mdmg_enqueue_carousel_script(){
+  wp_add_inline_script(
+    'mdmg-style', // make sure this runs *after* your main script/stylesheet
+    <<< 'JS'
+    document.addEventListener('DOMContentLoaded', function(){
+      const wrapper = document.querySelector('.stories-wrapper');
+      if(!wrapper) return;
+      document.querySelector('.more-stories .prev')
+        .addEventListener('click', () => wrapper.scrollBy({ left: -340, behavior: 'smooth' }));
+      document.querySelector('.more-stories .next')
+        .addEventListener('click', () => wrapper.scrollBy({ left:  340, behavior: 'smooth' }));
+    });
+    JS
+  );
+}
+add_action('wp_enqueue_scripts','mdmg_enqueue_carousel_script');
