@@ -261,11 +261,20 @@ html, body {
   
 
 
+  .artist-spotlight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+  }
+
   /* /////// Home Page Highlight Styles ///////// */
 
 
   .highlight-container {
-    max-width: 1000px; /* match your card width */
+    max-width: 1200px; /* match your card width */
     margin: 0 auto;
     padding: 0 1rem;
   }
@@ -375,7 +384,6 @@ html, body {
     background-color: #ffb3d9; /* Pink */
     padding: 2rem;
     margin-top: 2rem;
-    border-radius: 12px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -392,7 +400,6 @@ html, body {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
   
@@ -445,9 +452,86 @@ html, body {
   .song-length {
     color: #000;
     opacity: 0.6;
+
   }
 
+  /* /////////////// Grid/Card Codes for Posts /////////////// */
 
+/* ─── 1) Grid: 3 / 2 / 1 columns ─── */
+.card-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.card {
+  background-color: #2f3a55;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  box-shadow: 10px 10px 0 #de4ea4;
+  max-width: 320px;
+  margin: 0 auto; /* centers each card in its grid cell */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 0 #de4ea4;
+}
+
+/* ─── Thumbnail Container: forces a perfect square ─── */
+.card .card-thumbnail {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #1e253a; /* fallback if no image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card .card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Title & (Optional) Price/Excerpt ─── */
+.card .card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 1rem 0.75rem 0;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card .card-price,
+.card .card-excerpt {
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 0.5rem 0.75rem 1rem;
+  margin: 0;
+  color: #f8f8f8;
+}
 
   /* /////// Artist Page Code /////// */
 
@@ -457,7 +541,62 @@ html, body {
     gap: 8rem;
     padding: 2rem;
   }
+  .artist-content{
+    margin: 4rem;
+    max-width: 75VW;
+    
+  }
   
+  .artist-content h2{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;       /* ~24px */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  
+  }
+  @media (min-width: 768px) {
+  .artist-content h2 {
+    font-size: 1.75rem;    /* ~28px */
+  }
+}
+
+.artist-content blockquote {
+  font-size: 1.125rem;     /* ~18px */
+  margin: 2rem auto;
+  padding-left: 1rem;
+  border-left: 4px solid #de4ea4;
+  color: #555;
+  line-height: 1.6;
+}
+
+  @media (min-width: 768px) {
+  .artist-content {
+    font-size: 1.125rem;  /* ~18px */
+  }
+}
+.artist-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;   /* give some breathing room */  
+}
+.artist-profile{
+  display: flex;
+    flex-direction: column;
+    /* max-width: 75vw; */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Slightly smaller text on narrow screens (phones) */
+@media (max-width: 480px) {
+  .artist-content {
+    font-size: 0.9rem;    /* ~14.4px */
+  }
+}
+
   @media (min-width: 600px) {
     .artist-grid {
       grid-template-columns: repeat(2, 1fr); /* Tablet */
@@ -467,53 +606,329 @@ html, body {
   @media (min-width: 900px) {
     .artist-grid {
       grid-template-columns: repeat(3, 1fr); /* Desktop */
+      align-self: center;
     }
   }
   
-  .artist-card {
-    text-decoration: none;
-    color: white;
-    background: #3C4967;
-    box-shadow: 10px 10px 0px #e7538b;
-    transition: transform 0.3s, box-shadow 0.3s;
-    overflow: hidden;
-    display: flex;
+
+.artist-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .artist-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .artist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card box */
+.artist-card {
+  background-color: #2f3a55;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  box-shadow: 10px 10px 0 #de4ea4;
+  max-width: 320px;
+  margin: 1rem auto;
+  border: 16px solid #2f3a55; /* same color to start with, can customize */
+}
+
+.artist-card:hover {
+  transform: scale(1.02);
+  box-shadow: 10px 10px 0 #de4ea4;
+}
+
+/* Square image that fills the card’s full width */
+.artist-thumbnail {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.artist-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Title below the image */
+.artist-name {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color:white;
+}
+
+  /* /////// Blog Page Code ////// */
+  
+.single-post-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  color: #1e1e1e;
+}
+
+.post-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: stretch;
+  margin-bottom: 2rem;
+}
+
+.post-thumbnail {
+  flex: 1 1 300px;
+  aspect-ratio: 1 / 1; /* Forces square aspect ratio */
+  overflow: hidden;
+}
+
+.post-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fills the square */
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+
+.post-meta {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.category-label {
+  background-color: #fdd835;
+  color: #000000;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  max-width: fit-content;
+  text-decoration: none;
+}
+
+.post-date {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  font-family: 'Antipol_VF';
+  font-weight: bold;
+  color: #3C4967;
+}
+
+.post-excerpt {
+  font-size: 1.3rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.post-author {
+  font-style: italic;
+  color: #777;
+}
+
+.post-content {
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 4rem;
+  font-family: 'Antipol_VF';
+}
+
+.author-bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ccc;
+}
+
+.author-avatar img {
+  border-radius: 50%;
+}
+
+.author-info h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.author-socials {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .post-header {
     flex-direction: column;
-    height: 100%;
   }
-  
-  .artist-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 10px 10px 0px #e7538b;
-  }
-  
-  .artist-card-inner {
-    padding: 1rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  .artist-thumbnail {
+
+  .post-thumbnail,
+  .post-info {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Keeps image square */
-    background-color: #3C4967;
-    padding: 1rem;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  }
+}
+
+/* //////// Blog Archive Page //////// */
+
+.blog-archive .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.blog-card {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: scale(1.02);
+}
+
+.blog-thumbnail img,
+.fallback-thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: #eee;
+  display: block;
+}
+
+.blog-content {
+  padding: 1rem;
+}
+
+.blog-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem;
+}
+
+.blog-excerpt {
+  font-size: 1rem;
+  color: #555;
+}
+
+.custom-blog-card {
+  background-color: #2f3a55;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  box-shadow: 10px 10px 0 #de4ea4;
+  max-width: 320px;
+  margin: 1rem auto;
+  border: 16px solid #2f3a55; /* same color to start with, can customize */
+}
+
+.custom-blog-card:hover {
+  transform: scale(1.02);
+}
+
+.custom-blog-card .card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #1e253a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-blog-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.custom-blog-card .card-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  padding: 0 1rem 1rem;
+  line-height: 1.4;
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  color: #1e253a;
+}
+
+/* Make sure the container stacks vertically and centers its children */
+.blog-archive .container {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Center the heading, clear any floats, force full width */
+.blog-archive .page-title,
+.blog-archive .section-heading {
+  width: 100% !important;
+  float: none !important;
+  text-align: center !important;
+  margin: 0 0 1.5rem;
+}
+
+/* 1) Base grid: 3 columns */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  
+}
+
+/* 2) Tablet (≤ 900px): 2 columns */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin:1.5rem;
   }
   
-  .artist-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-  
+
   .artist-name {
     margin-top: 1rem;
     font-size: 1.25rem;
@@ -627,3 +1042,308 @@ html, body {
     align-items: center;
   } /* Make it dissapear? */
 }
+=======
+  /* Optional: shrink card padding/font on tablet */
+  .custom-blog-card {
+    padding-bottom: 0.75rem;
+  }
+  .custom-blog-card .card-title {
+    font-size: 2rem;
+  }
+  .section-heading {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #1e253a;
+}
+}
+
+/* 3) Phone (≤ 600px): 1 column */
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    margin:1.5rem;
+  }
+
+  .custom-blog-card {
+    max-width: none;    /* let it fill the column */
+    margin: 1rem 0;     /* vertical spacing only */
+  }
+
+  .blog-archive .container {
+    padding: 1rem;      /* tighten container padding */
+  }
+
+  .section-heading {
+    font-size: 2rem;  /* reduce heading size */
+    margin-bottom: 1rem;
+  }
+}
+
+
+/* /////////// Store Page Styles //////// */
+
+.store-archive .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.store-archive .section-heading {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+/* ───────── Responsive Grid ───────── */
+.card-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ───────── Store Card Base Styles ───────── */
+.store-card {
+  background-color: #2f3a55;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  box-shadow: 10px 10px 0 #de4ea4; /* magenta drop shadow */
+  border: 16px solid #2f3a55;
+  transition: transform 0.2s ease;
+  
+}
+
+.store-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 0 #de4ea4;
+}
+
+/* ───────── Thumbnail Area ───────── */
+.store-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #eee;
+  display: block;
+}
+
+.store-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback styling if no featured image */
+.fallback-thumbnail {
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+}
+
+/* ───────── Title & Price ───────── */
+.card-title {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card-price {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1rem;
+  color: #f8f8f8;
+}
+
+/* ───────── Optional: tighten up font on tablets ───────── */
+@media (max-width: 900px) {
+  .card-title {
+    font-size: 2rem;
+  }
+  .card-price {
+    font-size: 0.85rem;
+  }
+}
+
+/* ───────── Optional: small padding cleanup on phones ───────── */
+@media (max-width: 600px) {
+  .card-title {
+    font-size: 1rem;
+  }
+  .card-price {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ///////// More Stories Scroller ///////// */
+
+.more-stories {
+  position: relative;
+  width: 100vw;              /* span the full viewport width */
+  left: 50%;                 /* align left edge to viewport */
+  transform: translateX(-50%);
+  margin: 0;                 /* kill default top/bottom margins */
+  padding: 2rem 0;           /* vertical padding only */
+  background: #2f3a55;       /* your dark blue background */
+  overflow: hidden;
+}
+
+.more-stories .section-heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: white;
+  font-family: "Antipol_VF";
+  font-size: 2rem;
+}
+
+.stories-wrapper {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  scrollbar-width: none;            /* Firefox */
+  font-family: "Antipol_VF";
+  font-weight: 500;
+}
+.stories-wrapper::-webkit-scrollbar { /* Chrome/Safari */
+  display: none;
+}
+
+.story-card {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  max-width: 320px;
+  background: #C7C8E7;
+  box-shadow: none;
+  color:#2f3a55;
+  font-family: "Antipol_VF";
+  font-weight: 500;
+  font-size: 1.5rem;
+  
+}
+
+.author-bio{
+
+}
+
+.more-stories-thumbnail{
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* modern browsers will honor this */
+  overflow: hidden; 
+}
+
+.more-stories-thumbnail img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* crops & scales to fill the box */
+}
+
+
+/* Re-use your .card, .card-thumbnail, .card-title rules from above */
+
+.stories-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #E4EB45;
+  box-shadow: 5px 5px 0 #de4ea4;
+  border: none;
+  border-radius: 50%;
+  color: #de4ea4;
+  font-size: 1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  cursor: pointer;
+  z-index: 10;
+  margin: 10px;
+}
+
+.more-stories .stories-nav.prev::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 0.6rem solid transparent;
+  border-bottom: 0.6rem solid transparent;
+  border-right: 0.8rem solid #de4ea4;   /* triangle color */
+}
+
+.more-stories .stories-nav.next::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 0.6rem solid transparent;
+  border-bottom: 0.6rem solid transparent;
+  border-left: 0.8rem solid #de4ea4;    /* triangle color */
+}
+
+.more-stories .stories-nav {
+  font-size: 0;         /* hides the ← and → characters */
+  background: #E4EB45;      /* keep your translucent circle or styling */
+  border: none;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 50px;
+}
+.story-card-title {
+  color:#2f3a55;
+  font-family: "Antipol_VF";
+  font-weight: 500;
+  font-size: 2rem;
+  margin-top: 2rem;
+  
+}
+
+
+.more-stories .prev { left: 0.5rem; }
+.more-stories .next { right: 0.5rem; }
+
+.site-footer, footer {
+  margin-top: 0 !important;
+  padding-top: 2rem;    /* optional: give it its own space from the content above */
+}
+
+.more-stories .stories-wrapper {
+  display: flex;
+  gap: 2rem;                  /* matches the space between cards */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  max-width: calc(3 * 320px + 2 * 2rem); /* 3 cards @320px + 2 gaps @2rem */
+  margin: 0 auto;             /* center the strip in its container */
+}
+
+.more-stories .story-card {
+  flex: 0 0 320px;            /* each card is exactly 320px wide */
+  scroll-snap-align: start;
+}
+=======
+  }
+
