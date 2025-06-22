@@ -61,11 +61,15 @@
     .site-footer {
         /* 设置背景/images/footer.png */
        background-image: url('<?php echo get_template_directory_uri(); ?>/images/footer.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         color: white;
-        padding: 280px 40px 0;
+        padding: 280px 40px 40px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        min-height: 400px;
     }
     
     .footer-info {
@@ -78,6 +82,7 @@
         font-size: 16px;
         line-height: 1.6;
         margin-bottom: 30px;
+        padding: 0 20px;
     }
     
     .social-links {
@@ -85,6 +90,7 @@
         justify-content: center;
         gap: 20px;
         margin-top: 20px;
+        flex-wrap: wrap;
     }
     
     .social-icon {
@@ -112,29 +118,75 @@
         color: white;
         background-color: #cd5c93;
         padding: 15px 0;
+        margin: 0;
     }
     
     .copyright p {
         margin: 0;
+        padding: 0 20px;
     }
     
     /* 响应式 */
     @media (max-width: 768px) {
         .site-footer {
-            padding: 20px 15px 0;
+            padding: 200px 20px 30px;
+            min-height: 300px;
+        }
+        
+        .footer-info {
+            max-width: 100%;
         }
         
         .footer-description {
             font-size: 14px;
+            line-height: 1.5;
+            padding: 0 10px;
+            margin-bottom: 20px;
         }
         
         .social-links {
             gap: 15px;
+            margin-top: 15px;
         }
         
         .social-icon {
             width: 35px;
             height: 35px;
+        }
+        
+        .social-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .copyright {
+            font-size: 12px;
+            padding: 12px 0;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .site-footer {
+            padding: 150px 15px 20px;
+        }
+        
+        .footer-description {
+            font-size: 13px;
+            padding: 0 5px;
+        }
+        
+        .social-links {
+            gap: 12px;
+        }
+        
+        .social-icon {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .social-icon svg {
+            width: 16px;
+            height: 16px;
         }
     }
 </style>
