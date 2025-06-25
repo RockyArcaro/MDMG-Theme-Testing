@@ -52,6 +52,12 @@ function is_current_page($page_name) {
         return is_front_page() || empty($page_slug) || $page_slug === 'music';
     }
     
+    // 特殊处理blog页面，因为实际URL是blog-page
+    if ($page_name === 'blog' || $page_name === 'blog-page') {
+        return $page_slug === 'blog' || $page_slug === 'blog-page' || 
+               is_home() || is_category() || is_tag() || is_single();
+    }
+    
     // 其他页面判断
     return $page_slug === $page_name || 
            is_page($page_name) || 
@@ -392,12 +398,12 @@ function is_current_page($page_name) {
 			<nav class="navbar-collapse collapse" id="navbar-collapse">
 				<ul class="main-menu">
 					<li class="<?php if(is_front_page()) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
-					<!-- 根据页面路径判断是否为当前页面 -->
-					<li class="<?php if(is_current_page('artists')) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/artists/')); ?>">Artists</a></li>
-					<li class="<?php if(is_current_page('events')) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/events/')); ?>">Events</a></li>
-					<li class="<?php if(is_current_page('blog') || is_current_page('blog-page')) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/blog/')); ?>">Blog</a></li>
-					<li class="<?php if(is_current_page('store')) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/store/')); ?>">Store</a></li>
-					<li class="<?php if(is_current_page('about-us')) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/about-us/')); ?>">About Us</a></li>
+					<!-- 使用实际访问的URL格式 -->
+					<li class="<?php if(is_post_type_archive('artist')||is_singular('artist')) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/artists/')); ?>">Artists</a></li>
+					<li class="<?php if(is_page('events') || is_post_type_archive('event') || is_singular('event')) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/events/')); ?>">Events</a></li>
+					<li class="<?php if((is_home() && !is_front_page()) || is_single() || is_category() || is_tag() || is_archive()) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/blog-page/')); ?>">Blog</a></li>
+					<li class="<?php if(is_post_type_archive('store_item') || is_singular('store_item')) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/store/')); ?>">Store</a></li>
+					<li class="<?php if(is_page('about-us')) echo 'current-menu-item'; ?>"><a href="<?php echo esc_url(home_url('/index.php/about-us/')); ?>">About Us</a></li>
 				</ul>
 			</nav>
 		</div>
