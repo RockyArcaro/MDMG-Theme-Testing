@@ -162,11 +162,11 @@ function is_current_page($page_name) {
         display: block;
         width: 24px;
         height: 4px;
-        background-: #ffffff;
+        background-color: #ffffff;
         margin: 1px 0;
         transition: all 0.3s ease-in-out;
         border-radius: 2px;
-        
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         position: relative;
     }
     
@@ -372,7 +372,6 @@ function is_current_page($page_name) {
         }
     }
 </style>
-<script src="<?php echo get_template_directory_uri(); ?>/js/menu.js"></script>
 </head>
 <body <?php body_class(); ?>>
 <div id="page" class="site">

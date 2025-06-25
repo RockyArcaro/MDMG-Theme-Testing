@@ -2,7 +2,7 @@
 
 function theme_enqueue_scripts() {
     wp_enqueue_style('main-style', get_stylesheet_uri());
-    wp_enqueue_script('menu-js', get_template_directory_uri() . '/js/menu.js', array(), false, true);
+    wp_enqueue_script('menu-js', get_template_directory_uri() . '/js/menu.js', array(), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
@@ -80,6 +80,9 @@ function mdmg_customize_register($wp_customize) {
       'type'     => 'text',
     ));
   }
+
+  add_action('customize_register', 'mdmg_customize_register');
+
 
   add_action('customize_register', 'mdmg_customize_register');
   add_action('customize_register', 'mdmg_customize_register');
