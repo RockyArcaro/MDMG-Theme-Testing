@@ -2,7 +2,7 @@
 
 function theme_enqueue_scripts() {
     wp_enqueue_style('main-style', get_stylesheet_uri());
-    wp_enqueue_script('menu-js', get_template_directory_uri() . '/js/menu.js', array(), false, true);
+    wp_enqueue_script('menu-js', get_template_directory_uri() . '/js/menu.js', array(), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
@@ -80,49 +80,4 @@ function mdmg_customize_register($wp_customize) {
       'type'     => 'text',
     ));
   }
-<<<<<<< Zijun-Test
   add_action('customize_register', 'mdmg_customize_register');
-=======
-  add_action('customize_register', 'mdmg_customize_register');
-
-
-
-  ///// Artist Page Code //////
-  add_theme_support('post-thumbnails');
-
-  function mdmg_register_artist_post_type() {
-    register_post_type('artist', array(
-      'labels' => array(
-          'name' => 'Artists',
-          'singular_name' => 'Artist',
-      ),
-      'public' => true,
-      'has_archive' => true,
-      'rewrite' => array('slug' => 'artists'),
-      'show_in_rest' => true,
-      'menu_icon' => 'dashicons-microphone',
-      'supports' => array('title', 'editor', 'thumbnail'), // <- important!
-  ));
-}
-add_action('init', 'mdmg_register_artist_post_type');
-
-
-////// Store Code ///////
-
-function create_store_item_post_type() {
-  register_post_type('store_item',
-      array(
-          'labels' => array(
-              'name' => __('Store Items'),
-              'singular_name' => __('Store Item')
-          ),
-          'public' => true,
-          'has_archive' => true,
-          'rewrite' => array('slug' => 'store'),
-          'show_in_rest' => true,
-          'supports' => array('title', 'thumbnail', 'editor'),
-      )
-  );
-}
-add_action('init', 'create_store_item_post_type');
->>>>>>> main
