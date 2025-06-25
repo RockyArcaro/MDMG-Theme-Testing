@@ -80,4 +80,85 @@ function mdmg_customize_register($wp_customize) {
       'type'     => 'text',
     ));
   }
+
   add_action('customize_register', 'mdmg_customize_register');
+
+
+  add_action('customize_register', 'mdmg_customize_register');
+  add_action('customize_register', 'mdmg_customize_register');
+
+
+
+  ///// Artist Page Code //////
+  add_theme_support('post-thumbnails');
+
+  function mdmg_register_artist_post_type() {
+    register_post_type('artist', array(
+      'labels' => array(
+          'name' => 'Artists',
+          'singular_name' => 'Artist',
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'rewrite' => array('slug' => 'artists'),
+      'show_in_rest' => true,
+      'menu_icon' => 'dashicons-microphone',
+      'supports' => array('title', 'editor', 'thumbnail'), // <- important!
+  ));
+}
+add_action('init', 'mdmg_register_artist_post_type');
+
+
+////// Store Code ///////
+
+function create_store_item_post_type() {
+  register_post_type('store_item',
+      array(
+          'labels' => array(
+              'name' => __('Store Items'),
+              'singular_name' => __('Store Item')
+          ),
+          'public' => true,
+          'has_archive' => true,
+          'rewrite' => array('slug' => 'store'),
+          'show_in_rest' => true,
+          'supports' => array('title', 'thumbnail', 'editor'),
+      )
+  );
+}
+add_action('init', 'create_store_item_post_type');
+
+
+
+
+//////// More Stories Scroller ///////////
+
+add_action('wp_enqueue_scripts', function(){
+  wp_add_inline_script(
+    'main-style', // replace with the handle you used in wp_enqueue_script()
+    <<<'JS'
+document.addEventListener('DOMContentLoaded', function(){
+  const wrapper = document.querySelector('.more-stories .stories-wrapper');
+  const prevBtn = document.querySelector('.more-stories .stories-nav.prev');
+  const nextBtn = document.querySelector('.more-stories .stories-nav.next');
+  if (!wrapper || !prevBtn || !nextBtn) return;
+
+  // grab one card and the gap
+  const card  = wrapper.querySelector('.card');
+  const style = getComputedStyle(wrapper);
+  const gap   = parseFloat(style.getPropertyValue('gap')) || 0;
+  const width = card.getBoundingClientRect().width;
+  const scrollAmount = Math.round(width + gap);
+
+  prevBtn.addEventListener('click', () => {
+    wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+  nextBtn.addEventListener('click', () => {
+    wrapper.scrollBy({ left:  scrollAmount, behavior: 'smooth' });
+  });
+});
+JS
+  );
+});
+
+
